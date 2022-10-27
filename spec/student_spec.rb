@@ -23,4 +23,23 @@ RSpec.describe Student do
       expect(student.age).to eq 25
     end
   end
+
+  describe '#scores' do
+    it 'starts with an empty array for scores' do
+      student = Student.new({name: "Morgan", age: 21})
+
+      expect(student.scores).to eq []
+    end
+  end
+
+  describe 'log_scores' do
+    it 'stores scores in student scores' do
+      student = Student.new({name: "Morgan", age: 21})
+
+      student.log_scores(89)
+      student.log_scores(78)
+
+      expect(student.scores).to eq [89, 78]
+    end
+  end
 end
