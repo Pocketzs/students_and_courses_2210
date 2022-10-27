@@ -35,7 +35,19 @@ describe Course do
 
   describe '#full?' do
     it 'returns false until amount of students reaches capacity' do
+      course = Course.new("Calculus", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jack", age: 25})
+
+      expect(course.full?).to eq(false)
+
+      course.enroll(student1)
+
+      expect(course.full?).to eq(false)
       
+      course.enroll(student2)
+
+      expect(course.full?).to eq(true)
     end
   end
 

@@ -12,4 +12,8 @@ class Course
   def enroll(studnet)
     @students << studnet
   end
+
+  def full?
+    @students.size == @capacity
+  end
 end
