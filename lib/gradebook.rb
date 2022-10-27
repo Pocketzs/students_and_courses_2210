@@ -12,4 +12,10 @@ class Gradebook
       course.students
     end.flatten
   end
+
+  def list_students_under_grade(threshold)
+    list_students.select do |student|
+      student.grade < threshold
+    end
+  end
 end

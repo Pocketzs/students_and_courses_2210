@@ -79,7 +79,7 @@ describe Gradebook do
       expect(gradebook.list_students_under_grade(90)).to eq [student2, student3, student4]
       expect(gradebook.list_students_under_grade(80)).to eq [student3, student4]
       expect(gradebook.list_students_under_grade(70)).to eq [student4]
-      expect(gradebook.list_students_under_grade(60)).to eq nil
+      expect(gradebook.list_students_under_grade(60)).to eq []
     end
   end
 end
