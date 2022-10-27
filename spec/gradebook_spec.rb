@@ -135,6 +135,8 @@ describe Gradebook do
       gradebook = Gradebook.new({instructor: "McDaniels", courses: [history, geometry, chemistry, calculus]})
 
       expect(gradebook.find_students_in_grade_range(60,80)).to eq([student2, student3, student4])
+      expect(gradebook.find_students_in_grade_range(70,90)).to eq([student1, student2, student3])
+      expect(gradebook.find_students_in_grade_range(91,100)).to eq([])
     end
   end
 end

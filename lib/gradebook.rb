@@ -31,4 +31,10 @@ class Gradebook
     end
     grades_by_course
   end
+
+  def find_students_in_grade_range(lower_bound, upper_bound)
+    list_students.select do |student|
+      student.grade >= lower_bound && student.grade <= upper_bound
+    end
+  end
 end
