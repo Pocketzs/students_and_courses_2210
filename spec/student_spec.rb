@@ -15,5 +15,12 @@ RSpec.describe Student do
       expect(student.name).to eq "Morgan"
       expect(student.age).to eq 21
     end
+
+    it 'can have different attributes' do
+      student = Student.new({name: "Jack", age: 25})
+
+      expect(student.name).to eq "Jack"
+      expect(student.age).to eq 25
+    end
   end
 end
