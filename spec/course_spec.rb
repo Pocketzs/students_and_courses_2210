@@ -44,7 +44,7 @@ describe Course do
       course.enroll(student1)
 
       expect(course.full?).to eq(false)
-      
+
       course.enroll(student2)
 
       expect(course.full?).to eq(true)
@@ -60,6 +60,22 @@ describe Course do
       course.enroll(student1)
       course.enroll(student2)
 
+      expect(course.students).to eq([student1, student2])
+    end
+
+    it 'stops storing studnets when at capacity' do
+      course = Course.new("Calculus", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jack", age: 25})
+      student3 = Student.new({name: "Sarah", age: 35})
+
+      course.enroll(student1)
+      course.enroll(student2)
+
+      expect(course.enroll(student3)).to eq nil
+
+      course.enroll(student3)
+      
       expect(course.students).to eq([student1, student2])
     end
   end

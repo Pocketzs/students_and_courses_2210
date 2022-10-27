@@ -10,7 +10,7 @@ class Course
   end
 
   def enroll(studnet)
-    @students << studnet
+    @students << studnet unless full?
   end
 
   def full?
