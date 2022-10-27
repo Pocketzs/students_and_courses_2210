@@ -36,7 +36,7 @@ describe Gradebook do
     end
   end
 
-  describe '#list students' do
+  describe '#list_students' do
     it 'can list all the students in its courses' do
       student1 = Student.new({name: "Morgan", age: 21})
       student2 = Student.new({name: "Jack", age: 25})
@@ -55,6 +55,31 @@ describe Gradebook do
       gradebook = Gradebook.new({instructor: "McDaniels", courses: [calculus, geometry, history, chemistry]})
       
       expect(gradebook.list_students).to eq [student1, student2, student3, student4]
+    end
+  end
+
+  describe '#list_students_under_grade' do
+    it 'can list all students with a grade below a given threshold' do
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jack", age: 25})
+      student3 = Student.new({name: "Joey", age: 22})
+      student4 = Student.new({name: "Christine", age: 26})
+      student1.log_scores(90)
+      student2.log_scores(80)
+      student3.log_scores(70)
+      student4.log_scores(60)
+      history = Course.new("History", 10)
+      history.enroll(student1)
+      history.enroll(student2)
+      history.enroll(student3)
+      history.enroll(student4)
+      gradebook = Gradebook.new({instructor: "McDaniels", courses: [history]})
+
+      expect(gradebook.list_students_under_grade(91)).to eq [student1, student2, student3, student4]
+      expect(gradebook.list_students_under_grade(90)).to eq [student2, student3, student4]
+      expect(gradebook.list_students_under_grade(80)).to eq [student3, student4]
+      expect(gradebook.list_students_under_grade(70)).to eq [student4]
+      expect(gradebook.list_students_under_grade(60)).to eq nil
     end
   end
 end
