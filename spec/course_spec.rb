@@ -25,5 +25,30 @@ describe Course do
       expect(course_1.capacity).to eq(2)
       expect(course_2.capacity).to eq(3)
     end
+
+    it 'starts with an empty array for students' do
+      course = Course.new("Calculus", 2)
+
+      expect(course.students).to eq([])
+    end
+  end
+
+  describe '#full?' do
+    it 'returns false until amount of students reaches capacity' do
+      
+    end
+  end
+
+  describe '#enroll' do
+    it 'stores student in students array' do
+      course = Course.new("Calculus", 2)
+      student1 = Student.new({name: "Morgan", age: 21})
+      student2 = Student.new({name: "Jack", age: 25})
+
+      course.enroll(student1)
+      course.enroll(student2)
+
+      expect(course.students).to eq([student1, student2])
+    end
   end
 end
